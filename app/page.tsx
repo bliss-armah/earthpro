@@ -28,10 +28,12 @@ export default function Home() {
   return (
     <div className="">
       <nav
-        className={`w-full h-[90px] sm:px-[13px] md:px-[125px] flex justify-between items-center fixed top-0 z-10 bg-white `}
+        className={`w-full h-[90px] sm:px-[13px] lg:px-[125px] flex justify-between items-center fixed top-0 z-10 bg-white `}
       >
-        <Image src="/logo.svg" alt="logo" width={87.13} height={85} />
-        <div className=" sm:hidden text-[18px] md:flex items-center gap-x-[65px] poppins-regular">
+        <div className="w-[70.13px] h-[52px] md:w-[87.13px] md:h-[85px] relative">
+          <Image src="/logo.svg" alt="logo" fill />
+        </div>
+        <div className=" text-[18px] md:flex items-center md:gap-x-8 lg:gap-x-[65px] poppins-regular">
           {tabs.map((tab) => (
             <a
               key={tab.id}
@@ -44,24 +46,24 @@ export default function Home() {
             </a>
           ))}
         </div>
-        <div className=""></div>
+        <div className="hidden lg:block"></div>
       </nav>
 
       {/* hero page */}
-      <div className="w-full  overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] sm:bg-center md:bg-top text-center justify-center">
-        <div className="w-full  bg-[#14213D]/50 pl-[129px] pt-[166px] pb-[326px] ">
-          <div className="text-white sm:mt-[78px] md:mt-[120px]  md:text-start">
-            <div className=" md:w-[681px] mb-6">
-              <h1 className=" sm:text-[40px]  md:text-[70px]  poppins-bold leading-[83px] mb-4">
+      <div className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] md:bg-top text-center justify-center">
+        <div className="w-full h-[500px] md:h-[873px] bg-[#14213D]/50 items-center flex md:pl-[129px]">
+          <div className="text-white sm:mt-[78px] md:text-start">
+            <div className="md:w-[681px] mb-6 ">
+              <h1 className="text-[30px]  md:text-[70px]  poppins-bold md:leading-[83px] mb-4">
                 Reliable Mining Solutions for a Sustainable Future
               </h1>
-              <p className="md:text-[24px] poppins-mediem leading-[34.5px]">
+              <p className="text-[18px] md:text-[24px] poppins-medium md:leading-[34.5px]">
                 Experts in Mineral Exploration & Mining Process Plant
                 Engineering
               </p>
             </div>
             <button
-              className="sm:px-[20px] sm:py-[12px] sm:h-[40px] md:px-[40px] md:py-[14.5px] md:h-[56px] text-2xl poppins-bold bg-[#FCBC11] rounded-md"
+              className="px-[20px] py-[12px] sm:h-[40px] md:px-[40px] md:py-[14.5px] md:h-[56px] text-2xl poppins-bold bg-[#FCBC11] rounded-md"
               onClick={() => scrollToSection("contact")}
             >
               Get in Touch
@@ -73,19 +75,19 @@ export default function Home() {
       {/* about us and service page */}
       <div
         id="about"
-        className="flex flex-col items-center justify-center pt-[80px] px-[130px] pb-[143px]"
+        className="flex flex-col items-center justify-center lg:pt-[80px] lg:px-[130px] lg:pb-[143px] lg:h-[1207px]"
       >
-        <div className="mb-[126px]">
-          <h1 className="text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-[23px] text-center">
+        <div className="mb-[50px] lg:mb-[126px] px-[16px] lg:px-0">
+          <h1 className="text-[30px] lg:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-[23px] text-center">
             About Us
           </h1>
-          <p className="w-[1467px] poppins-regular text-[16px] text-[#343544] leading-[30px] mb-[48px]">
+          <p className="w-full lg:w-[1467px] poppins-regular text-[16px] text-[#343544] md:leading-[30px] mb-[48px]">
             Earthpro Exploration Group is a leading mineral exploration and
             process plant engineering...
           </p>
-          <div className="w-[1467px] flex items-center justify-between">
-            <div className="">
-              <h1 className="text-[30px] text-[#14213D] volkhov-bold leading-[38.7px] mb-[25px]">
+          <div className="lg:w-[1467px] flex flex-col lg:flex-row items-center justify-between">
+            <div className="w-full ">
+              <h1 className="text-[30px] text-center lg:text-start text-[#14213D] volkhov-bold leading-[38.7px] mb-[25px]">
                 Why Choose Us?
               </h1>
               {chooseUsOptionsData.map((item, index) => (
@@ -99,22 +101,26 @@ export default function Home() {
                 </div>
               ))}
             </div>
-            <Image src="/aboutus.svg" alt="about us" width={699} height={309} />
+            <div className="w-full lg-w-[699px] h-[200px] lg-h-[309px] relative">
+
+            <Image src="/aboutus.svg" alt="about us" fill/>
+            </div>
           </div>
         </div>
-        <div id="services" className="">
-          <h1 className="text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-[47px] text-center">
+        <div id="services" className="px-[16px] md:px-0 mb-10 lg:mb-0">
+          <h1 className="text-[30px] md:text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-[47px] text-center">
             Services
           </h1>
           <ServiceCards />
         </div>
       </div>
+
       {/* Get in touch section */}
       <div
         id="contact"
-        className="bg-[#14213D] flex flex-col items-center py-[76px] px-[318px] relatve"
+        className="bg-[#14213D] flex flex-col items-center py-[20px]  lg:py-[76px] lg:px-[318px] relatve"
       >
-        <h1 className="text-[50px] text-white volkhov-bold leading-[65.5px] mb-[62px] text-center">
+        <h1 className="text-[30px] lg:text-[50px] text-white volkhov-bold leading-[65.5px] mb-[20px] lg:mb-[62px] text-center">
           Get in Touch
         </h1>
 
@@ -122,18 +128,18 @@ export default function Home() {
       </div>
 
       {/* Client and partners */}
-      <div className="flex flex-col items-center px-[290px] py-[100px] relatve">
-        <h1 className="text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-[62px] text-center">
+      <div className="flex flex-col items-center px-10 lg:px-[290px] py-8 lg:py-[100px] relatve">
+        <h1 className="w-full text-[30px] md:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-[62px] text-center">
           Clients & Partners
         </h1>
-        <div className="w-full flex items-center justify-center gap-x-[73px]">
-          <div className="bg-[#F2F2F2] px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
+        <div className="w-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-[73px]">
+          <div className="bg-[#F2F2F2] px-[45px] lg:px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
             Company Logo 1
           </div>
-          <div className="bg-[#F2F2F2] px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
+          <div className="bg-[#F2F2F2] px-[45px] lg:px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
             Company Logo 2
           </div>
-          <div className="bg-[#F2F2F2] px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
+          <div className="bg-[#F2F2F2] px-[45px] lg:px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
             Company Logo 3
           </div>
         </div>
@@ -216,24 +222,26 @@ const services = [
 
 const ServiceCards = () => {
   return (
-    <div className="flex flex-wrap justify-center gap-x-[29px]">
+    <div className="flex flex-wrap justify-center gap-[29px]">
       {services.map((service, index) => (
         <div
           key={index}
-          className={`w-[408px] h-[241px] px-[41px] py-[36px] rounded-[24px] shadow-md transition-all duration-300 ${
+          className={`md:w-[408px] md:h-[241px] p-5 md:px-[41px] md:py-[36px] rounded-[24px] shadow-md transition-all duration-300 ${
             service.isActive
               ? "bg-[#14213D] text-white"
               : "bg-white text-[#14213D] border"
           }`}
         >
           <h2
-            className={`text-lg poppins-bold mb-[18px] ${
+            className={`md:text-lg poppins-bold mb-2 md:mb-[18px] ${
               service.isActive ? "text-white" : "text-[#14213D]"
             }`}
           >
             {service.title}
           </h2>
-          <p className="poppins-regular">{service.description}</p>
+          <p className="text-sm md:text-base poppins-regular">
+            {service.description}
+          </p>
         </div>
       ))}
     </div>
@@ -242,9 +250,9 @@ const ServiceCards = () => {
 
 const ContactForm = () => {
   return (
-    <div className="w-full flex items-center justify-center bg-[#14213D]">
+    <div className="w-full flex flex-col lg:flex-row items-center justify-center bg-[#14213D]">
       {/* Left Section: Contact Details */}
-      <div className="text-white space-y-6 p-6 w-[30%]">
+      <div className="text-white space-y-6 p-6 md:grid md:grid-cols-2 gap-5 lg:block lg:w-[30%]">
         <div className="flex items-center gap-3">
           <div className="h-[35px] w-[35px] flex items-center justify-center rounded-full bg-[#FCBC11]">
             <FaMapMarkerAlt className="text-white-400" />
@@ -258,7 +266,7 @@ const ContactForm = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="h-[35px] w-[35px] flex items-center justify-center rounded-full bg-[#FCBC11]">
+          <div className="h-[35px] w-[35px] flex  items-center justify-center rounded-full bg-[#FCBC11]">
             <FaPhoneAlt className="text-white-400" />
           </div>
           <div>
@@ -279,7 +287,7 @@ const ContactForm = () => {
       </div>
 
       {/* Right Section: Contact Form */}
-      <div className="bg-white rounded-xl p-8 shadow-lg max-w-lg">
+      <div className="bg-white rounded-xl p-8 shadow-lg w-[90%] lg:max-w-lg">
         <h2 className="text-center text-xl poppins-bold text-[#14213D] mb-[41px]">
           Send a Message
         </h2>
@@ -289,7 +297,7 @@ const ContactForm = () => {
           method="POST"
           className="space-y-4"
         >
-          <div className="flex gap-4">
+          <div className="flex flex-col lg:flex-row gap-4">
             <input
               type="text"
               name="firstName"
@@ -343,9 +351,9 @@ const ContactForm = () => {
 const Footer = () => {
   return (
     <footer className="w-full bg-[#14213D] flex flex-col justify-center items-center text-white py-8">
-      <div className="flex items-start gap-x-[152px] mb-[48px]">
+      <div className="flex flex-col md:flex-row items-start gap-x-[152px] mb-[48px]">
         {/* Left Section: Logo */}
-        <div className="w-[191px] h-[181px] relative">
+        <div className=" w-[100px] md:w-[191px] h-[90px] md:h-[181px] relative">
           <Image src="/footerlogo.svg" alt="EEC Logo" fill />
         </div>
         {/* Middle Section: Quick Links */}

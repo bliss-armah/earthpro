@@ -430,7 +430,7 @@ const ContactForm = () => {
 const Footer = () => {
   return (
     <footer className="w-full bg-[#14213D] flex flex-col justify-center items-center text-white py-8">
-      <div className="flex flex-col md:flex-row items-start gap-x-[152px] mb-[48px]">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-x-[152px] mb-[48px]">
         {/* Left Section: Logo */}
         <div className=" w-[100px] md:w-[191px] h-[90px] md:h-[181px] relative">
           <Image src="/footerlogo.svg" alt="EEC Logo" fill />
@@ -460,7 +460,7 @@ const Footer = () => {
           <h3 className="text-[24px] poppins-semibold mb-[31px]">
             Get In Touch
           </h3>
-          <ul className="mt-2 space-y-2">
+          <ul className="mt-2 space-y-2 flex flex-col items-center md:items-start">
             <li className="flex items-center gap-2">
               <FaEnvelope />
               <span>info@eec.com</span>

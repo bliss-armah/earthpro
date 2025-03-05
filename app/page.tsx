@@ -87,7 +87,7 @@ export default function Home() {
       </nav>
 
       {/* hero page */}
-      <div className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] md:bg-top text-center justify-center lg:mb-[80px]">
+      <div className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] md:bg-top text-center justify-center">
         <div className="w-full h-[500px] md:h-[873px] bg-[#14213D]/50 items-center flex md:pl-[129px]">
           <div className="text-white sm:mt-[78px] md:text-start">
             <div className="md:w-[681px] mb-6 ">
@@ -112,9 +112,9 @@ export default function Home() {
       {/* about us and service page */}
       <div
         id="about"
-        className="flex flex-col items-center justify-center py-8 px-[13px] lg:px-[130px] lg:pb-[143px] lg:h-[1207px] lg:mb-[80px]"
+        className="flex flex-col items-center justify-center py-8 px-[13px] lg:px-[130px] lg:h-[1207px]"
       >
-        <div className="mb-6 lg:mb-[126px]">
+        <div className="mb-6 lg:mb-[76px]">
           <h1 className="text-[30px] lg:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-8 md:mb-[23px] text-center">
             About Us
           </h1>
@@ -158,7 +158,7 @@ export default function Home() {
       {/* Get in touch section */}
       <div
         id="contact"
-        className="bg-[#14213D] flex flex-col items-center px-[13px] py-8 md:py-[40px] lg:py-[76px] lg:px-[318px] relatve"
+        className="bg-[#14213D] flex flex-col items-center px-[13px] py-8 md:py-[40px] 2xl:py-[76px] 2xl:px-[318px] relatve"
       >
         <h1 className="text-[30px] lg:text-[50px] text-white volkhov-bold lg:leading-[65.5px] mb-[20px] lg:mb-[62px] text-center">
           Get in Touch

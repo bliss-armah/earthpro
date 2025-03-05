@@ -36,7 +36,7 @@ export default function Home() {
     <div className="">
       {show && (
         <div>
-          <div className="w-full h-full overflow-auto absolute top-0 left-0 z-50 bg-white py-5 px-[22px] shadow-lg">
+          <div className="w-full h-full absolute top-0 left-0 z-50 bg-white py-5 px-[22px] shadow-lg">
             <div
               className={`w-full flex justify-end mb-[10px]`}
               onClick={toggleShowNavbarMenu}
@@ -118,7 +118,7 @@ export default function Home() {
           <h1 className="text-[30px] lg:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-8 md:mb-[23px] text-center">
             About Us
           </h1>
-          <p className="w-full lg:w-[1467px] poppins-regular text-[16px] text-center text-[#343544] md:leading-[30px] mb-8 md:mb-[48px]">
+          <p className="w-full  poppins-regular text-[16px] text-center text-[#343544] md:leading-[30px] mb-8 md:mb-[48px]">
             Earthpro exploration and construction is a leading exploration and
             mine process plant construction company dedicated to unlocking the
             potential of mineral resources with expertise in mineral exploration
@@ -126,7 +126,7 @@ export default function Home() {
             provide end to end solutions that drive efficiency , sustainability
             and long term success in the mining sector.
           </p>
-          <div className="lg:w-[1467px] flex flex-col lg:flex-row items-center justify-between">
+          <div className=" flex flex-col lg:flex-row items-center justify-between">
             <div className="w-full ">
               <h1 className="text-[30px] text-center lg:text-start text-[#14213D] volkhov-bold leading-[38.7px] mb-8 lg:mb-[25px]">
                 Why Choose Us?
@@ -266,7 +266,7 @@ const ServiceCards = () => {
       {services.map((service, index) => (
         <div
           key={index}
-          className={`md:w-[408px] md:h-[241px] p-5 md:px-[41px] md:py-[36px] rounded-[24px] shadow-md transition-all duration-300 ${
+          className={`w-[300px] 2xl:w-[408px] 2xl:h-[241px] p-5 md:px-[41px] md:py-[36px] rounded-[24px] shadow-md transition-all duration-300 ${
             service.isActive
               ? "bg-[#14213D] text-white"
               : "bg-white text-[#14213D] border"
@@ -292,7 +292,7 @@ const ContactForm = () => {
   return (
     <div className="w-full flex flex-col lg:flex-row items-center justify-center bg-[#14213D]">
       {/* Left Section: Contact Details */}
-      <div className="text-white space-y-6 p-6 md:grid md:grid-cols-2 gap-5 lg:block lg:w-[30%]">
+      <div className="text-white space-y-6 p-6 md:grid md:grid-cols-2 gap-5 lg:block 2xl:w-[30%]">
         <div className="flex items-center gap-3">
           <div className="h-[35px] w-[35px] flex items-center justify-center rounded-full bg-[#FCBC11]">
             <FaMapMarkerAlt className="text-white-400" />

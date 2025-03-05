@@ -266,7 +266,7 @@ const chooseUsOptionsData = [
     count: "2",
     title: "Cutting-Edge Technology",
     description:
-      "We leverage the latest tools for generation in mining operations.",
+      "We leverage the latest tools for precise target generation in mining operations.",
   },
   {
     bgColor: "#FE4411",

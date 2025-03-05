@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FaBox, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
+import { TiThMenu } from "react-icons/ti";
 
 const tabs = [
   { id: "home", name: "Home" },
@@ -25,15 +27,47 @@ export default function Home() {
     scrollToSection(id);
   };
 
+  const [show, setShow] = useState(false);
+  const toggleShowNavbarMenu = () => {
+    setShow(!show);
+  };
+
   return (
     <div className="">
+      {show && (
+        <div>
+          <div className="w-full h-full overflow-auto absolute top-0 left-0 z-50 bg-white py-5 px-[22px] shadow-lg">
+            <div
+              className={`w-full flex justify-end mb-[10px]`}
+              onClick={toggleShowNavbarMenu}
+            >
+              <IoMdClose color={"#000000"} size={24} />
+            </div>
+            <ul className="w-full flex flex-col gap-y-4 px-[13px]">
+
+          {tabs.map((tab) => (
+            <a
+              key={tab.id}
+              onClick={() => handleScroll(tab.id)}
+              className={`cursor-pointer ${
+                activeTab === tab.id ? "poppins-bold text-[#FCBC11]" : ""
+              }`}
+            >
+              {tab.name}
+            </a>
+          ))}
+            </ul>
+          </div>
+        </div>
+      )}
       <nav
-        className={`w-full h-[90px] sm:px-[13px] lg:px-[125px] flex justify-between items-center fixed top-0 z-10 bg-white `}
+        id="home"
+        className={`w-full h-[90px] px-[13px] lg:px-[125px] flex justify-between items-center fixed top-0 z-10 bg-white `}
       >
         <div className="w-[70.13px] h-[52px] md:w-[87.13px] md:h-[85px] relative">
           <Image src="/logo.svg" alt="logo" fill />
         </div>
-        <div className=" text-[18px] md:flex items-center md:gap-x-8 lg:gap-x-[65px] poppins-regular">
+        <div className=" text-[18px] hidden md:flex items-center md:gap-x-8 lg:gap-x-[65px] poppins-regular">
           {tabs.map((tab) => (
             <a
               key={tab.id}
@@ -46,11 +80,14 @@ export default function Home() {
             </a>
           ))}
         </div>
+        <div className={"md:hidden"} onClick={toggleShowNavbarMenu}>
+          <TiThMenu size={30} />
+        </div>
         <div className="hidden lg:block"></div>
       </nav>
 
       {/* hero page */}
-      <div className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] md:bg-top text-center justify-center">
+      <div className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] md:bg-top text-center justify-center lg:mb-[80px]">
         <div className="w-full h-[500px] md:h-[873px] bg-[#14213D]/50 items-center flex md:pl-[129px]">
           <div className="text-white sm:mt-[78px] md:text-start">
             <div className="md:w-[681px] mb-6 ">
@@ -75,19 +112,23 @@ export default function Home() {
       {/* about us and service page */}
       <div
         id="about"
-        className="flex flex-col items-center justify-center lg:pt-[80px] lg:px-[130px] lg:pb-[143px] lg:h-[1207px]"
+        className="flex flex-col items-center justify-center py-8 px-[13px] lg:px-[130px] lg:pb-[143px] lg:h-[1207px] lg:mb-[80px]"
       >
-        <div className="mb-[50px] lg:mb-[126px] px-[16px] lg:px-0">
-          <h1 className="text-[30px] lg:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-[23px] text-center">
+        <div className="mb-6 lg:mb-[126px]">
+          <h1 className="text-[30px] lg:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-8 md:mb-[23px] text-center">
             About Us
           </h1>
-          <p className="w-full lg:w-[1467px] poppins-regular text-[16px] text-[#343544] md:leading-[30px] mb-[48px]">
-            Earthpro Exploration Group is a leading mineral exploration and
-            process plant engineering...
+          <p className="w-full lg:w-[1467px] poppins-regular text-[16px] text-center text-[#343544] md:leading-[30px] mb-8 md:mb-[48px]">
+            Earthpro exploration and construction is a leading exploration and
+            mine process plant construction company dedicated to unlocking the
+            potential of mineral resources with expertise in mineral exploration
+            , strategic mine planning and mine process plant development , we
+            provide end to end solutions that drive efficiency , sustainability
+            and long term success in the mining sector.
           </p>
           <div className="lg:w-[1467px] flex flex-col lg:flex-row items-center justify-between">
             <div className="w-full ">
-              <h1 className="text-[30px] text-center lg:text-start text-[#14213D] volkhov-bold leading-[38.7px] mb-[25px]">
+              <h1 className="text-[30px] text-center lg:text-start text-[#14213D] volkhov-bold leading-[38.7px] mb-8 lg:mb-[25px]">
                 Why Choose Us?
               </h1>
               {chooseUsOptionsData.map((item, index) => (
@@ -102,13 +143,12 @@ export default function Home() {
               ))}
             </div>
             <div className="w-full lg-w-[699px] h-[200px] lg-h-[309px] relative">
-
-            <Image src="/aboutus.svg" alt="about us" fill/>
+              <Image src="/aboutus.svg" alt="about us" fill />
             </div>
           </div>
         </div>
         <div id="services" className="px-[16px] md:px-0 mb-10 lg:mb-0">
-          <h1 className="text-[30px] md:text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-[47px] text-center">
+          <h1 className="text-[30px] md:text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-8 md:mb-[47px] text-center">
             Services
           </h1>
           <ServiceCards />
@@ -118,9 +158,9 @@ export default function Home() {
       {/* Get in touch section */}
       <div
         id="contact"
-        className="bg-[#14213D] flex flex-col items-center py-[20px]  lg:py-[76px] lg:px-[318px] relatve"
+        className="bg-[#14213D] flex flex-col items-center px-[13px] py-8 md:py-[40px] lg:py-[76px] lg:px-[318px] relatve"
       >
-        <h1 className="text-[30px] lg:text-[50px] text-white volkhov-bold leading-[65.5px] mb-[20px] lg:mb-[62px] text-center">
+        <h1 className="text-[30px] lg:text-[50px] text-white volkhov-bold lg:leading-[65.5px] mb-[20px] lg:mb-[62px] text-center">
           Get in Touch
         </h1>
 
@@ -128,7 +168,7 @@ export default function Home() {
       </div>
 
       {/* Client and partners */}
-      <div className="flex flex-col items-center px-10 lg:px-[290px] py-8 lg:py-[100px] relatve">
+      <div className="flex flex-col items-center px-[13px] lg:px-[290px] py-8 md:py-10 lg:py-[100px] relatve">
         <h1 className="w-full text-[30px] md:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-[62px] text-center">
           Clients & Partners
         </h1>
@@ -287,7 +327,7 @@ const ContactForm = () => {
       </div>
 
       {/* Right Section: Contact Form */}
-      <div className="bg-white rounded-xl p-8 shadow-lg w-[90%] lg:max-w-lg">
+      <div className="bg-white rounded-xl p-8 shadow-lg  lg:max-w-lg">
         <h2 className="text-center text-xl poppins-bold text-[#14213D] mb-[41px]">
           Send a Message
         </h2>
@@ -302,14 +342,14 @@ const ContactForm = () => {
               type="text"
               name="firstName"
               placeholder="First Name"
-              className="input-style w-1/2"
+              className="lg:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
             <input
               type="text"
               name="lastName"
               placeholder="Last Name"
-              className="input-style w-1/2"
+              className="lg:w-1/2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
@@ -318,19 +358,19 @@ const ContactForm = () => {
             type="email"
             name="email"
             placeholder="Email"
-            className="input-style w-full"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
             required
           />
           <input
             type="tel"
             name="phone"
             placeholder="Phone Number"
-            className="input-style w-full"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
           />
           <textarea
             name="message"
             placeholder="How Can We Help You"
-            className="input-style w-full h-[147px]"
+            className="p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full h-[147px]"
             required
           ></textarea>
 

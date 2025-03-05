@@ -1,9 +1,20 @@
 "use client";
+import { Poppins, Volkhov } from "next/font/google";
 import Image from "next/image";
 import { useState } from "react";
 import { FaBox, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
+
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+
+const volkhov = Volkhov({
+  weight: ["700"],
+  subsets: ["latin"],
+});
 
 const tabs = [
   { id: "home", name: "Home" },
@@ -33,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <div className="">
+    <div className="relative">
       {show && (
         <div>
           <div className="w-full h-full absolute top-0 left-0 z-50 bg-white py-5 px-[22px] shadow-lg">
@@ -44,24 +55,27 @@ export default function Home() {
               <IoMdClose color={"#000000"} size={24} />
             </div>
             <ul className="w-full flex flex-col gap-y-4 px-[13px]">
-
-          {tabs.map((tab) => (
-            <a
-              key={tab.id}
-              onClick={() => handleScroll(tab.id)}
-              className={`cursor-pointer ${
-                activeTab === tab.id ? "poppins-bold text-[#FCBC11]" : ""
-              }`}
-            >
-              {tab.name}
-            </a>
-          ))}
+              {tabs.map((tab) => (
+                <a
+                  key={tab.id}
+                  onClick={() => {
+                    handleScroll(tab.id);
+                    toggleShowNavbarMenu();
+                  }}
+                  className={`cursor-pointer text-2xl ${
+                    activeTab === tab.id
+                      ? `${poppins.className} font-bold text-[#FCBC11]`
+                      : ""
+                  }`}
+                >
+                  {tab.name}
+                </a>
+              ))}
             </ul>
           </div>
         </div>
       )}
       <nav
-        id="home"
         className={`w-full h-[90px] px-[13px] lg:px-[125px] flex justify-between items-center fixed top-0 z-10 bg-white `}
       >
         <div className="w-[70.13px] h-[52px] md:w-[87.13px] md:h-[85px] relative">
@@ -73,25 +87,35 @@ export default function Home() {
               key={tab.id}
               onClick={() => handleScroll(tab.id)}
               className={`cursor-pointer ${
-                activeTab === tab.id ? "poppins-bold text-[#FCBC11]" : ""
+                activeTab === tab.id
+                  ? "${poppins.className} font-bold text-[#FCBC11]"
+                  : ""
               }`}
             >
               {tab.name}
             </a>
           ))}
         </div>
-        <div className={"md:hidden"} onClick={toggleShowNavbarMenu}>
+        <div className={"md:hidden"} onClick={()=>{
+          toggleShowNavbarMenu()
+          window.scrollTo({
+            top: 0,
+          });
+          }}>
           <TiThMenu size={30} />
         </div>
         <div className="hidden lg:block"></div>
       </nav>
 
       {/* hero page */}
-      <div className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] md:bg-top text-center justify-center">
+      <div
+        id="home"
+        className="w-full overflow-hidden relative bg-no-repeat bg-cover bg-[url('/hero.webp')] bg-top md:bg-[url('/hero.webp')] md:bg-top text-center justify-center"
+      >
         <div className="w-full h-[500px] md:h-[873px] bg-[#14213D]/50 items-center flex md:pl-[129px]">
           <div className="text-white sm:mt-[78px] md:text-start">
             <div className="md:w-[681px] mb-6 ">
-              <h1 className="text-[30px]  md:text-[70px]  poppins-bold md:leading-[83px] mb-4">
+              <h1 className="text-[30px]  md:text-[70px]  ${poppins.className} font-bold md:leading-[83px] mb-4">
                 Reliable Mining Solutions for a Sustainable Future
               </h1>
               <p className="text-[18px] md:text-[24px] poppins-medium md:leading-[34.5px]">
@@ -100,7 +124,7 @@ export default function Home() {
               </p>
             </div>
             <button
-              className="px-[20px] py-[12px] sm:h-[40px] md:px-[40px] md:py-[14.5px] md:h-[56px] text-2xl poppins-bold bg-[#FCBC11] rounded-md"
+              className="px-[20px] py-[12px] sm:h-[40px] md:px-[40px] md:py-[14.5px] md:h-[56px] text-2xl ${poppins.className} font-bold bg-[#FCBC11] rounded-md"
               onClick={() => scrollToSection("contact")}
             >
               Get in Touch
@@ -112,23 +136,27 @@ export default function Home() {
       {/* about us and service page */}
       <div
         id="about"
-        className="flex flex-col items-center justify-center py-8 px-[13px] lg:px-[130px] lg:h-[1207px]"
+        className="flex flex-col items-center justify-center py-8 px-[13px] lg:px-[130px] 2xl:h-[1207px]"
       >
         <div className="mb-6 lg:mb-[76px]">
-          <h1 className="text-[30px] lg:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-8 md:mb-[23px] text-center">
+          <h1
+            className={`text-[30px] lg:text-[50px] text-[#14213D] ${volkhov.className} font-bold lg:leading-[65.5px] mb-8 md:mb-[23px] text-center`}
+          >
             About Us
           </h1>
           <p className="w-full  poppins-regular text-[16px] text-center text-[#343544] md:leading-[30px] mb-8 md:mb-[48px]">
             Earthpro exploration and construction is a leading exploration and
             mine process plant construction company dedicated to unlocking the
-            potential of mineral resources with expertise in mineral exploration
-            , strategic mine planning and mine process plant development , we
-            provide end to end solutions that drive efficiency , sustainability
-            and long term success in the mining sector.
+            potential of mineral resources with expertise in mineral
+            exploration, strategic mine planning and mine process plant
+            development, we provide end-to-end solutions that drive efficiency,
+            sustainability and long term success in the mining sector.
           </p>
           <div className=" flex flex-col lg:flex-row items-center justify-between">
             <div className="w-full ">
-              <h1 className="text-[30px] text-center lg:text-start text-[#14213D] volkhov-bold leading-[38.7px] mb-8 lg:mb-[25px]">
+              <h1
+                className={`text-[30px] text-center lg:text-start text-[#14213D] ${volkhov.className} font-bold leading-[38.7px] mb-8 lg:mb-[25px]`}
+              >
                 Why Choose Us?
               </h1>
               {chooseUsOptionsData.map((item, index) => (
@@ -148,7 +176,9 @@ export default function Home() {
           </div>
         </div>
         <div id="services" className="px-[16px] md:px-0 mb-10 lg:mb-0">
-          <h1 className="text-[30px] md:text-[50px] text-[#14213D] volkhov-bold leading-[65.5px] mb-8 md:mb-[47px] text-center">
+          <h1
+            className={`text-[30px] md:text-[50px] text-[#14213D] ${volkhov.className} font-bold leading-[65.5px] mb-8 md:mb-[47px] text-center`}
+          >
             Services
           </h1>
           <ServiceCards />
@@ -160,7 +190,9 @@ export default function Home() {
         id="contact"
         className="bg-[#14213D] flex flex-col items-center px-[13px] py-8 md:py-[40px] 2xl:py-[76px] 2xl:px-[318px] relatve"
       >
-        <h1 className="text-[30px] lg:text-[50px] text-white volkhov-bold lg:leading-[65.5px] mb-[20px] lg:mb-[62px] text-center">
+        <h1
+          className={`text-[30px] lg:text-[50px] text-white ${volkhov.className} font-bold lg:leading-[65.5px] mb-[20px] lg:mb-[62px] text-center`}
+        >
           Get in Touch
         </h1>
 
@@ -168,19 +200,22 @@ export default function Home() {
       </div>
 
       {/* Client and partners */}
-      <div className="flex flex-col items-center px-[13px] lg:px-[290px] py-8 md:py-10 lg:py-[100px] relatve">
-        <h1 className="w-full text-[30px] md:text-[50px] text-[#14213D] volkhov-bold lg:leading-[65.5px] mb-[62px] text-center">
+      <div className="flex flex-col items-center px-[13px] lg:px-[100px] py-8 md:py-10 lg:py-[100px] relatve">
+        <h1 className="w-full text-[30px] md:text-[50px] text-[#14213D] ${volkhov.className} font-bold lg:leading-[65.5px] mb-[62px] text-center">
           Clients & Partners
         </h1>
-        <div className="w-full flex flex-col md:flex-row items-center justify-center gap-6 md:gap-[73px]">
-          <div className="bg-[#F2F2F2] px-[45px] lg:px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
-            Company Logo 1
+        <div className="w-max grid md:grid-cols-2 2xl:grid-cols-4 items-center justify-center gap-8">
+          <div className="bg-[#F2F2F2] w-full md:h-[110px] flex items-center justify-center text-center px-4 lg:px-[50px] py-[16px] text-[#000000] poppins-regular md:text-[23px] leading-[34.5px]">
+            John Bitar & Company Limited
           </div>
-          <div className="bg-[#F2F2F2] px-[45px] lg:px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
-            Company Logo 2
+          <div className="bg-[#F2F2F2] w-full md:h-[110px] flex items-center justify-center text-center px-4 lg:px-[50px] py-[16px] text-[#000000] poppins-regular md:text-[23px] leading-[34.5px]">
+            Tradex Logistics Limited
           </div>
-          <div className="bg-[#F2F2F2] px-[45px] lg:px-[70px] py-[26px] text-[#000000] poppins-regular text-[23px] leading-[34.5px]">
-            Company Logo 3
+          <div className="bg-[#F2F2F2] w-full md:h-[110px] flex items-center justify-center text-center px-4 lg:px-[50px] py-[16px] text-[#000000] poppins-regular md:text-[23px] leading-[34.5px]">
+            Transatlantic Company Ltd
+          </div>
+          <div className="bg-[#F2F2F2] w-full md:h-[110px] flex items-center justify-center text-center px-4 lg:px-[50px] py-[16px] text-[#000000] poppins-regular md:text-[23px] leading-[34.5px]">
+            Symergy Ltd
           </div>
         </div>
       </div>
@@ -211,8 +246,8 @@ const ChooseUsOptions = ({
         {count}
       </div>
       <div className="text-[#343544] poppins-regular text-[16px] leading-[30px]">
-        <h1 className="poppins-bold">{title}</h1>
-        <p>{description}</p>
+        <h1 className={`${poppins.className} font-bold`}>{title}</h1>
+        <p className="text-sm md:text-base ">{description}</p>
       </div>
     </div>
   );
@@ -223,13 +258,15 @@ const chooseUsOptionsData = [
     bgColor: "#f0bb1f",
     count: "1",
     title: "Industry Expertise",
-    description: "Years of experience in delivering top-tier mining solutions.",
+    description:
+      "Years of experience in delivering top tier exploration and mining solutions.",
   },
   {
     bgColor: "#14213D",
     count: "2",
     title: "Cutting-Edge Technology",
-    description: "We leverage the latest tools for precise mining operations.",
+    description:
+      "We leverage the latest tools for generation in mining operations.",
   },
   {
     bgColor: "#FE4411",
@@ -241,21 +278,21 @@ const chooseUsOptionsData = [
 
 const services = [
   {
-    title: "Mining Process Plant Construction",
+    title: "Mineral Exploration",
     description:
-      "From design to commissioning, we build efficient and high-performance mineral processing plants tailored to industry needs.",
+      "Using advanced exploration techniques, we identify and assess valuable mineral deposits to unlock new opportunities for mining investments.",
     isActive: false,
   },
   {
     title: "Mine Planning & Development",
     description:
       "We offer strategic mine planning to maximise resource extraction, optimise operations, and ensure long-term profitability.",
-    isActive: true, // Active card (darker background)
+    isActive: true,
   },
   {
-    title: "Mineral Exploration",
+    title: "Mining Process Plant Construction",
     description:
-      "Using advanced exploration techniques, we identify and assess valuable mineral deposits to unlock new opportunities for mining investments.",
+      "From design to commissioning, we build efficient and high-performance mineral processing plants tailored to industry needs.",
     isActive: false,
   },
 ];
@@ -273,7 +310,9 @@ const ServiceCards = () => {
           }`}
         >
           <h2
-            className={`md:text-lg poppins-bold mb-2 md:mb-[18px] ${
+            className={`md:text-lg ${
+              poppins.className
+            } font-bold mb-2 md:mb-[18px] ${
               service.isActive ? "text-white" : "text-[#14213D]"
             }`}
           >
@@ -300,7 +339,7 @@ const ContactForm = () => {
           <div>
             <h3 className="font-semibold text-lg">Location</h3>
             <p className="text-sm">
-              Location: Abuakwa , near baptist University
+              Location: Abuakwa-Kumasi, near Baptist University
             </p>
           </div>
         </div>
@@ -328,7 +367,7 @@ const ContactForm = () => {
 
       {/* Right Section: Contact Form */}
       <div className="bg-white rounded-xl p-8 shadow-lg  lg:max-w-lg">
-        <h2 className="text-center text-xl poppins-bold text-[#14213D] mb-[41px]">
+        <h2 className="text-center text-xl ${poppins.className} font-bold text-[#14213D] mb-[41px]">
           Send a Message
         </h2>
 
@@ -428,7 +467,7 @@ const Footer = () => {
             </li>
             <li className="flex items-center gap-2">
               <FaBox />
-              <span>PO Box 456 gh</span>
+              <span>Noble ventures, P.O.Box 45</span>
             </li>
           </ul>
         </div>

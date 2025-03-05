@@ -149,7 +149,7 @@ export default function Home() {
             mine process plant construction company dedicated to unlocking the
             potential of mineral resources with expertise in mineral
             exploration, strategic mine planning and mine process plant
-            development, we provide end-to-end solutions that drive efficiency,
+            development. We provide end-to-end solutions that drive efficiency,
             sustainability and long term success in the mining sector.
           </p>
           <div className=" flex flex-col lg:flex-row items-center justify-between">

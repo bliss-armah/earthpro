@@ -96,12 +96,15 @@ export default function Home() {
             </a>
           ))}
         </div>
-        <div className={"md:hidden"} onClick={()=>{
-          toggleShowNavbarMenu()
-          window.scrollTo({
-            top: 0,
-          });
-          }}>
+        <div
+          className={"md:hidden"}
+          onClick={() => {
+            toggleShowNavbarMenu();
+            window.scrollTo({
+              top: 0,
+            });
+          }}
+        >
           <TiThMenu size={30} />
         </div>
         <div className="hidden lg:block"></div>
@@ -338,9 +341,7 @@ const ContactForm = () => {
           </div>
           <div>
             <h3 className="font-semibold text-lg">Location</h3>
-            <p className="text-sm">
-              Location: Abuakwa-Kumasi, near Baptist University
-            </p>
+            <p className="text-sm">Abuakwa-Kumasi, near Baptist University</p>
           </div>
         </div>
 

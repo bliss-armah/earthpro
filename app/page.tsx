@@ -139,11 +139,11 @@ export default function Home() {
       {/* about us and service page */}
       <div
         id="about"
-        className="flex flex-col items-center justify-center py-8 px-[13px] lg:px-[130px] 2xl:h-[1207px]"
+        className="flex flex-col items-center justify-center px-[13px] lg:px-[130px] mt-[80px]"
       >
-        <div className="mb-6 lg:mb-[76px]">
+        <div className="mb-6 lg:mb-[126px]">
           <h1
-            className={`text-[30px] lg:text-[50px] text-[#14213D] ${volkhov.className} font-bold lg:leading-[65.5px] mb-8 md:mb-[23px] text-center`}
+            className={`text-[30px] lg:text-[50px] text-[#14213D] ${volkhov.className} font-bold lg:leading-[65.5px] mb-4 md:mb-[23px] text-center`}
           >
             About Us
           </h1>
@@ -178,11 +178,19 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div id="services" className="px-[16px] md:px-0 mb-10 lg:mb-0">
+        <div id="services" className="px-[16px] md:px-0 mb-10 lg:mb-[126px]">
           <h1
-            className={`text-[30px] md:text-[50px] text-[#14213D] ${volkhov.className} font-bold leading-[65.5px] mb-8 md:mb-[47px] text-center`}
+            className={`text-[30px] md:text-[50px] text-[#14213D] ${volkhov.className} font-bold leading-[65.5px] md:mb-[47px] text-center`}
           >
             Services
+          </h1>
+          <ServiceCards />
+        </div>
+        <div id="rentals" className="px-[16px] md:px-0 mb-10 lg:mb-[143px]">
+          <h1
+            className={`text-[30px] md:text-[50px] text-[#14213D] ${volkhov.className} font-bold leading-[65.5px] md:mb-[47px] text-center`}
+          >
+            Rentals
           </h1>
           <ServiceCards />
         </div>

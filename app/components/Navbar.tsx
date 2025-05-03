@@ -11,6 +11,7 @@ const tabs = [
   { id: "home", name: "Home" },
   { id: "about", name: "About us" },
   { id: "services", name: "Services" },
+  { id: "rentals", name: "Rentals" },
   { id: "contact", name: "Contact us" },
 ];
 

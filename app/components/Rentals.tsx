@@ -7,7 +7,7 @@ export default function Rentals() {
 
 
   return (
-    <section id="services" className="px-4 md:px-0 mb-10 lg:mb-[126px]">
+    <section id="rentals" className="px-4 md:px-0 mb-10 lg:mb-[126px]">
       <h1
         className={`text-[30px] md:text-[50px] text-[#14213D] ${volkhov.className} font-bold leading-[65.5px] mb-8 md:mb-[47px] text-center`}
       >

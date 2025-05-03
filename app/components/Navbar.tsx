@@ -5,7 +5,8 @@ import { TiThMenu } from "react-icons/ti";
 import Image from "next/image";
 import { scrollToSection } from "../utils/scrollToSection";
 import MobileMenu from "./MobileMenu";
-import { redirect,useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import { poppins } from "../fonts";
 
 const tabs = [
   { id: "home", name: "Home" },
@@ -16,12 +17,23 @@ const tabs = [
 ];
 
 export default function Navbar() {
-  const [activeTab, setActiveTab] = useState("home");
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      return sessionStorage.getItem("activeTab") || "home";
+    }
+    return "home";
+  });
+
+  const updateActiveTab = (id: string) => {
+    setActiveTab(id);
+    sessionStorage.setItem("activeTab", id);
+  };
+
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
 
   const handleScroll = (id: string) => {
-    setActiveTab(id);
+    updateActiveTab(id);
     scrollToSection(id);
     if (showMenu) setShowMenu(false);
   };
@@ -54,12 +66,17 @@ export default function Navbar() {
             <a
               key={tab.id}
               onClick={() => {
-                handleScroll(tab.id);
-                router.push(`/#${tab.id}`);
+                if (tab.id === "rentals") {
+                  router.push("/rentals");
+                  updateActiveTab(tab.id);
+                } else {
+                  handleScroll(tab.id);
+                  router.push(`/#${tab.id}`);
+                }
               }}
               className={`cursor-pointer ${
                 activeTab === tab.id
-                  ? "${poppins.className} font-bold text-[#FCBC11]"
+                  ? `${poppins.className} font-bold text-[#FCBC11]`
                   : ""
               }`}
             >

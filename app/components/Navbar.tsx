@@ -47,6 +47,7 @@ export default function Navbar() {
           tabs={tabs}
           activeTab={activeTab}
           handleScroll={handleScroll}
+          updateActiveTab={updateActiveTab}
           toggleMenu={toggleMenu}
         />
       )}

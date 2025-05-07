@@ -4,7 +4,7 @@ export const images = [
     { name: "Bulldozer", src: "/dozer.webp" },
     { name: "Backhoe Loader", src: "/426F.webp" },
     { name: "Backhoe Loader", src: "/backhoe-loader.webp" },
-    { name: "Articulated Dumb Truck", src: "/articulatordump.jpg" },
+    { name: "Articulated Dump Truck", src: "/articulatordump.jpg" },
     { name: "Dozer D8", src: "/dozer-d8.webp" },
     { name: "Excavator", src: "/john-kakuk.webp" },
     { name: "Motor Grader", src: "/motor-grader.webp" },
